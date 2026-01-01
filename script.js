@@ -129,19 +129,19 @@ function displayLogoInHeader() {
   const welcomeLogo = document.getElementById("logoPlaceholder");
   if (welcomeLogo) {
     welcomeLogo.innerHTML =
-      '<img src="logo.png" alt="Vheevid Hub Logo" style="max-width: 100%; height: 100%; object-fit: contain;">';
+      '<img src="Logo.png" alt="Vheevid Hub Logo" style="max-width: 100%; height: 100%; object-fit: contain;">';
   }
 
   const headerLogo = document.querySelector(".header-logo");
   if (headerLogo) {
     headerLogo.innerHTML =
-      '<img src="logo.png" alt="Vheevid Hub Logo" style="max-width: 100%; height: 100%; object-fit: contain;">';
+      '<img src="Logo.png" alt="Vheevid Hub Logo" style="max-width: 100%; height: 100%; object-fit: contain;">';
   }
 
   const mobileLogoArea = document.getElementById("mobileLogoArea");
   if (mobileLogoArea) {
     mobileLogoArea.innerHTML =
-      '<img src="logo.png" alt="Vheevid Hub Logo" style="max-width: 100%; height: 100%; object-fit: contain;">';
+      '<img src="Logo.png" alt="Vheevid Hub Logo" style="max-width: 100%; height: 100%; object-fit: contain;">';
   }
 }
 
