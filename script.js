@@ -5,7 +5,7 @@ const formData = {};
 let logoFile = null;
 
 const WEBFORMS_ACCESS_KEY = "d54d0b93-d2d5-45d4-9ec2-78d4e7cf2c15";
-const WEBFORMS_EMAIL = "ajumobiisaac96@gmail.com";
+const WEBFORMS_EMAIL = "vheevidhub@gmail.com";
 const WEBFORMS_API_URL = "https://api.web3forms.com/submit";
 
 // ===== DOM ELEMENTS =====
