@@ -23,9 +23,14 @@ const successModal = document.getElementById("successModal");
 const emailModal = document.getElementById("emailModal");
 const errorModal = document.getElementById("errorModal");
 const submitBtn = document.getElementById("submitBtn");
+const themeToggle = document.getElementById("themeToggle");
 
 // ===== INITIALIZATION =====
 document.addEventListener("DOMContentLoaded", () => {
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem("theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+
   setTimeout(() => {
     welcomeScreen.classList.add("hidden");
     questionnaireScreen.style.display = "flex";
@@ -41,6 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
+  // Theme toggle event listener
+  themeToggle.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+    console.log("[v0] Theme toggled to:", newTheme);
+  });
+
   closeBtn.addEventListener("click", () => {
     if (
       confirm("Are you sure you want to close? Your progress will be lost.")
