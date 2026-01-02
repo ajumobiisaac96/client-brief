@@ -13,6 +13,18 @@
   --border: #e0e0e0;
   --gray-bg: #f5f5f5;
   --error: #d62500;
+  --input-bg: #ffffff;
+}
+
+/* Added dark theme variables */
+[data-theme="dark"] {
+  --primary: #ffffff;
+  --background: #000000;
+  --text-dark: #f5f5f5;
+  --text-light: #a0a0a0;
+  --border: #333333;
+  --gray-bg: #111111;
+  --input-bg: #111111;
 }
 
 body {
@@ -21,6 +33,7 @@ body {
   background: var(--background);
   color: var(--text-dark);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ===== WELCOME SCREEN ===== */
@@ -30,7 +43,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+  background: var(--background);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,6 +112,43 @@ body {
   color: var(--text-light);
 }
 
+/* Theme Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  margin-right: 8px;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+[data-theme="dark"] .sun-icon {
+  display: block;
+}
+
+[data-theme="dark"] .moon-icon {
+  display: none;
+}
+
+.sun-icon {
+  display: none;
+}
+
 /* ===== QUESTIONNAIRE SCREEN ===== */
 .questionnaire-screen {
   min-height: 100vh;
@@ -122,6 +172,8 @@ body {
   padding: 20px;
   background: var(--background);
   border-bottom: 1px solid var(--border);
+  position: relative;
+  z-index: 10;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
@@ -206,6 +258,11 @@ body {
 
 .close-btn:hover {
   color: var(--accent);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
 }
 
 /* Progress */
@@ -317,7 +374,18 @@ textarea {
   font-size: 15px;
   font-family: inherit;
   transition: all 0.2s;
-  background: var(--background);
+  background: var(--input-bg);
+  color: var(--text-dark);
+}
+
+select {
+  padding-right: 40px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 20px;
+  padding-right: 44px;
 }
 
 input[type="text"]:focus,
@@ -458,6 +526,7 @@ textarea {
   accent-color: var(--accent);
   width: 18px;
   height: 18px;
+  flex-shrink: 0;
 }
 
 .radio-option input[type="radio"]:checked + .radio-label {
@@ -476,47 +545,51 @@ textarea {
   color: var(--text-dark);
 }
 
-/* Checkbox grid layout */
+/* Redesigned Checkbox grid for better responsiveness and visibility */
 .checkbox-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .checkbox-option {
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 16px;
   cursor: pointer;
   font-size: 14px;
   color: var(--text-dark);
   border: 1.5px solid var(--border);
-  border-radius: 8px;
+  border-radius: 50px;
   transition: all 0.2s;
+  background: var(--input-bg);
+  white-space: nowrap;
+  flex: 0 1 auto;
 }
 
 .checkbox-option:hover {
   border-color: var(--accent);
-  background: #fafafa;
+  background: var(--gray-bg);
 }
 
 .checkbox-option input[type="checkbox"] {
-  margin-right: 8px;
+  margin-right: 10px;
   cursor: pointer;
   accent-color: var(--accent);
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
-}
-
-.checkbox-option input[type="checkbox"]:checked + span {
-  color: var(--accent);
-  font-weight: 600;
 }
 
 .checkbox-option:has(input[type="checkbox"]:checked) {
   border-color: var(--accent);
-  background: #fff5f5;
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.checkbox-option input[type="checkbox"]:checked + span {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .helper-text {
@@ -687,7 +760,8 @@ textarea {
   flex: 1;
   overflow-y: auto;
   padding: 0;
-  background: white;
+  background: var(--background);
+  color: var(--text-dark);
 }
 
 .modal-preview-content .email-section {
@@ -867,7 +941,7 @@ textarea {
 }
 
 .email-section:hover {
-  background-color: #fafafa;
+  background-color: var(--gray-bg);
 }
 
 .email-section:last-child {
@@ -906,7 +980,7 @@ textarea {
 }
 
 .email-item:not(:last-child) {
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--border);
   padding-bottom: 12px;
   margin-bottom: 12px;
 }
@@ -1088,7 +1162,12 @@ textarea {
   }
 
   .checkbox-grid {
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+  }
+
+  .checkbox-option {
+    padding: 8px 14px;
+    font-size: 13px;
   }
 
   .modal {
@@ -1179,7 +1258,12 @@ textarea {
   }
 
   .checkbox-grid {
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 6px;
+  }
+
+  .checkbox-option {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 
   .next-btn {
