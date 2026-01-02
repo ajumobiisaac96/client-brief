@@ -549,13 +549,17 @@ textarea {
 .checkbox-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .checkbox-option {
   display: flex;
   align-items: center;
-  padding: 10px 16px;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
   cursor: pointer;
   font-size: 14px;
   color: var(--text-dark);
@@ -1262,7 +1266,7 @@ textarea {
   }
 
   .checkbox-option {
-    padding: 6px 12px;
+    padding: 10px;
     font-size: 12px;
   }
 
