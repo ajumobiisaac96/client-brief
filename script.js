@@ -4,7 +4,7 @@ const totalSteps = 6;
 const formData = {};
 let logoFile = null;
 
-const WEBFORMS_ACCESS_KEY = "d54d0b93-d2d5-45d4-9ec2-78d4e7cf2c15";
+const WEBFORMS_ACCESS_KEY = "c2e87d99-e935-445a-955a-fa6179412bd3";
 const WEBFORMS_EMAIL = "vheevidhub@gmail.com";
 const WEBFORMS_API_URL = "https://api.web3forms.com/submit";
 
@@ -13,6 +13,7 @@ const welcomeScreen = document.getElementById("welcomeScreen");
 const questionnaireScreen = document.getElementById("questionnaireScreen");
 const closeBtn = document.getElementById("closeBtn");
 const prevBtn = document.getElementById("prevBtn");
+const mobileBackBtn = document.getElementById("mobileBackBtn");
 const nextBtn = document.getElementById("nextBtn");
 const nextBtnText = document.getElementById("nextBtnText");
 const stepCounter = document.getElementById("stepCounter");
@@ -64,6 +65,7 @@ function setupEventListeners() {
   });
 
   prevBtn.addEventListener("click", previousStep);
+  mobileBackBtn.addEventListener("click", previousStep);
   nextBtn.addEventListener("click", nextStep);
 
   // Form inputs for data collection
@@ -233,6 +235,7 @@ function showStep(step) {
   document.querySelector(`[data-step="${step}"]`).classList.add("active");
 
   prevBtn.disabled = step === 1;
+  mobileBackBtn.disabled = step === 1;
   nextBtnText.textContent =
     step === totalSteps ? "Review & Submit" : "Next Step";
 }
